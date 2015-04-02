@@ -1,0 +1,51 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Command List",
+	"description": "A list of commands supported by a given item.",
+	"type": "array",
+	"items": {
+		"type": "object",
+		"schema": {
+			"id": {
+				"type": "integer",
+				"description": "The unique identifier of the item to which these commands are associated."
+			},
+			"name": {
+				"type": "string",
+				"description": "The name of the item to which these commands are associated."
+			},
+			"commands": {
+				"type": "array",
+				"description": "The name of the item to which these commands are associated.",
+				"items": {
+					"schema": {
+						"name": {
+							"type": "string",
+							"description": "The name of the command.  Used in the invocation of this command."
+						},
+						"description": {
+							"type": "string",
+							"description": "The description of the command."
+						},
+						"params": {
+							"type": "array",
+							"description": "An array of the parameters that can be sent to this command.  (optional)",
+							"items": {
+								"schema": {
+									"name": {
+										"type": "string",
+										"description": "The name of the parameter to this command."
+									},
+									"desc": {
+										"type": "string",
+										"description": "The description of the parameter to this command."
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

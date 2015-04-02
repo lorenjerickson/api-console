@@ -1,0 +1,9 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Agent List",
+    "description": "A list of agents included in the current project.",
+    "type": "array",
+    "items": {
+    	"type": "string"
+    }
+}

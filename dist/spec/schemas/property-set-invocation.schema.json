@@ -1,0 +1,6 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Set Property Request",
+    "description": "A description of the payload required to set a property on the given device.",
+    "type": "object"
+}

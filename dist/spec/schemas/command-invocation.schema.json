@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Device Command Invocation",
+    "description": "A description of the invocation of a command for a given device.",
+    "type": "object",
+    "schema": {
+    	"command": {
+    		"type": "string",
+    		"description": "The name of the action to be invoked"
+    	},
+        "tParams": {
+            "type": "array",
+            "description": "An array of parameters to be sent with the command",
+            "items": {
+                "type": "object"
+            }
+        }
+    }
+}

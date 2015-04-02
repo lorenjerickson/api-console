@@ -1,0 +1,105 @@
+type: collection
+displayName: Control4 Project Categories
+is: [ secured ]
+get:
+  description: Returns a list of all categories of items defined in the project.
+  responses:
+    200:
+      body:
+        application/json:
+          schema: !include ../schemas/category-list.schema.json
+/{categoryName}:
+  is: [ secured, filterable ]
+  get:
+    description: |
+        Returns a list of devices in the project that belong to the given category.  This route is used to access non-proxy, third-party and combo drivers.  Requests for proxy-based devices should be made through the dedicated routes declared for those devices elsewhere in this specification.  For example, refer to the documentation for the ```/api/v1/categories/lights``` routes.  The full list of cateogry names for devices present in the current project can be discovered by issuing the ```GET /api/v1/catgegories``` request.
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include ../schemas/item-list.schema.json
+  /proxies:
+    is: [ secured ]
+    description: Returns a list of proxy interfaces for those devices that are within the given category.
+    get:
+      responses: 
+        200:
+          body:
+            application/json:
+              schema: ../schemas/proxy-list.schema.json
+  /{id}:
+    is: [ secured ]
+    description: Returns a single device defined in the project based on its unique identifer.
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include ../schemas/item.schema.json
+    /properties:
+      is: [ secured ]
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/properties-list.schema.json
+      post:
+        body:
+          application/json:
+            schema: !include ../schemas/property-set-invocation.schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/response.schema.json
+    /actions:
+      is: [ secured ]
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/actions-list.schema.json
+      put:
+        body:
+          application/json:
+            schema: !include ../schemas/action-invocation.schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/response.schema.json
+    /variables:
+      is: [ secured ]
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/variables-list.schema.json
+    /commands:
+      is: [ secured ]
+      displayName: Device Commands
+      description: Returns a list of commands available for the device through the given device driver.
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/command-list.schema.json
+      put:
+        description: Executes the command given in the body on the given device.
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/response.schema.json
+/rooms: !include rooms.partial.yaml
+/lights: !include lights.partial.yaml
+/thermostats: !include thermostats.partial.yaml
+/audio_video: !include audio_video.partial.yaml
+/blinds: !include blinds.partial.yaml
+/cameras: !include cameras.partial.yaml
+/pools: !include pools.partial.yaml
+/security: !include security.partial.yaml

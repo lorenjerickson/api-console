@@ -1,0 +1,21 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Room Device Order and Visibility",
+	"description": "An object that describes a request to change the room device order and visiiblity for a certain type of device.",
+	"type": "object",
+	"schema": {
+		"hidden": {
+			"type": "array",
+			"items": {
+				"type": "integer"
+			}
+
+		},
+		"visible": {
+			"type": "array",
+			"items": {
+				"type": "integer"
+			}
+		}
+	}
+}

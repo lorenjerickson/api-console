@@ -1,0 +1,4 @@
+queryParameters:
+  SubscriptionClientId:
+    description: When provided with a request this parameter indicates that a subscription to the result of the request should be created for the given SubscriptionClientId.  The SubscriptionClientId is established through a separate API function provided by Control4 API Client JavaScript library.  See [Control4 REST API Subscriptions](../docs/subscriptions.md) for more information.
+    type: string

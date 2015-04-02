@@ -1,0 +1,10 @@
+queryParameters:
+  page:
+    description: The number of pages to return
+    type: number
+  offset:
+    description: The page at which to start (1 = first page)
+    type: number
+  count:
+    description: The number of items to return per page
+    type: number

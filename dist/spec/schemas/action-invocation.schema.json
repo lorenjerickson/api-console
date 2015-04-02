@@ -1,0 +1,12 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Device Action",
+    "description": "A general representation of an item defined in the current project.",
+    "type": "object",
+    "schema": {
+    	"action": {
+    		"type": "string",
+    		"description": "The name of the action to be invoked"
+    	}
+    }
+}

@@ -1,0 +1,98 @@
+  displayName: Categorty Device List
+  description: Describes the items defined within the project that belong to the given cateogry.
+  is: [ secured, filterable ]
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include ../schemas/item-list.schema.json
+  /{id}:
+    is: [ secured ]
+    displayName: Device In Category
+    description: Describes a single device within the given category based on its unique identifer.
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include ../schemas/item.schema.json
+    /properties:
+      is: [ secured ]
+      description: Describes the properties available for the given device within the given cagtegory.
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/properties-list.schema.json
+      post:
+        body:
+          application/json:
+            schema: !include ../schemas/property-set-invocation.schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/response.schema.json
+    /actions:
+      is: [ secured ]
+      description: Describes the variables available for the given device within the given category.
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/actions-list.schema.json
+      put:
+        body:
+          application/json:
+            schema: !include ../schemas/action-invocation.schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/response.schema.json
+    /variables:
+      is: [ secured ]
+      description: Describes the variables available for the given item within the given category.
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/variables-list.schema.json
+    /commands:
+      is: [ secured ]
+      displayName: Light Commands
+      description: Describes the commands available for the given device in the given cateogry.
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/command-list.schema.json
+      put:
+        description: The list of commands available for the given device in the given cateogry.
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/response.schema.json
+  /amplifier: !include amplifier.partial.yaml
+  /aswitch: !include aswitch.partial.yaml
+  /avswitch: !include avswitch.partial.yaml
+  /cd: !include cd.partial.yaml
+  /discchanger: !include discchanger.partial.yaml
+  /dvd: !include dvd.partial.yaml
+  /media_player: !include media_player.partial.yaml
+  /ipod: !include ipod.partial.yaml
+  /projector: !include projector.partial.yaml
+  /receiver: !include receiver.partial.yaml
+  /satellite: !include satellite.partial.yaml
+  /tuner: !include tuner.partial.yaml
+  /tv: !include tv.partial.yaml
+  /vcr: !include vcr.partial.yaml
+  /cable: !include cable.partial.yaml

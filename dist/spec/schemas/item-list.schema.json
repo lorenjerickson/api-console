@@ -1,0 +1,11 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Item List",
+	"description": "A list of items items defined in the current project.",
+	"type": "array",
+	"items": {
+		"schema": {
+			"$ref": "./item.schema.json"
+		}
+	}
+}

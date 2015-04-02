@@ -1,0 +1,6 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Project Item",
+    "description": "A general representation of an item defined in the current project.",
+    "type": "object"
+}

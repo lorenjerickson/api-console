@@ -1,0 +1,105 @@
+type: collection
+displayName: Agents
+is: [ secured ]
+get:
+  description: Returns a list of all agents included in the project.
+  responses:
+    200:
+      body:
+        application/json:
+          schema: !include ../schemas/agent-list.schema.json
+/advanced_lighting:
+  type: collection
+  displayName: Advanced Lighting Scenes Agent
+  is: [ secured ]
+  get: 
+    description: Returns a list of all advanced lighting scenes defined in the project.
+    responses:
+      200:
+        body:
+          application/json:
+            # TODO schema
+  /commands:
+    type: collection
+    displayName: Advanced Lighting Scene Commands
+    is: [ secured ]
+    get: 
+      description: Returns a list of comamnds available for advanced lighting scenes.
+      responses:
+        200:
+          body:
+            application/json:
+              # TODO schema
+    /{commandName}:
+      displayName: Execute Advanced Lighting Scene Command
+      is:  [ secured ]
+      get:
+        description: Invokes the given advanced lighting scene command.
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/command-invocation.schema.json
+/custom_buttons:
+  type: collection
+  displayName: Custom Buttons Agent
+  is: [ secured ]
+  get: 
+    description: Returns a list of all custom buttons defined in the project.
+    responses:
+      200:
+        body:
+          application/json:
+            # TODO schema
+  /commands:
+    type: collection
+    displayName: Custom Button Commands
+    is: [ secured ]
+    get: 
+      description: Returns a list of comamnds available for the defined custom buttons.
+      responses:
+        200:
+          body:
+            application/json:
+              # TODO schema
+    /{commandName}:
+      displayName: Execute Custom Button Command
+      is:  [ secured ]
+      get:
+        description: Invokes the given custom button command.
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/command-invocation.schema.json
+/scheduler:
+  type: collection
+  displayName: Scheduler Agent
+  is: [ secured ]
+  get: 
+    description: Returns a list of all schedules defined in the project.
+    responses:
+      200:
+        body:
+          application/json:
+            # TODO schema
+  /{id}:
+    displayName: Schedule Agent Event
+    is: [ secured ]
+    get:
+      description: Returns the details of a given scheduler agent event.
+      responses: 
+        200:
+          body:
+            application/json:
+              schema: !include ../schemas/scheduler-event.schema.json
+    post:
+      description: Returns the details of a given scheduler agent event.
+      body:
+        application/json:
+          schema: !include ../schemas/scheduler-event.schema.json
+      responses: 
+        200:
+          body:
+            application/json:
+              schema: !include ../schemas/response.schema.json

@@ -1,0 +1,9 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Property List",
+	"description": "A list of properties for the given item.",
+	"type": "array",
+	"items": {
+		"type": "object"
+	}
+}

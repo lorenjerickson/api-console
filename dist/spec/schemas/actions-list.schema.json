@@ -1,0 +1,9 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Action List",
+	"description": "A list of actions that are supported by a given item.",
+	"type": "array",
+	"items": {
+		"type": "string"
+	}
+}

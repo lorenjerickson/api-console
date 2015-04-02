@@ -1,0 +1,25 @@
+#%RAML 0.8
+title: Control4 REST API
+baseUri: https://{domain}.control4.com/api/{version}
+documentation:
+ - title: Home
+   content: !include ./docs/master.md
+version: v1
+protocols: [ HTTPS ]
+baseUriParameters:
+  domain:
+    type: string
+    description: The target deployment environment for the API
+    enum: [ 'reflector', 'reflector-beta2', 'reflector-devint']
+    default: 'reflector'
+traits:
+  - filterable: !include ./traits/filterable.yaml
+  - observable: !include ./traits/observable.yaml
+  - secured: !include ./traits/secured.yaml
+  - paged: !include ./traits/paged.yaml
+resourceTypes:
+  - collection: !include ./resourceTypes/collection.yaml
+/agents: !include ./routes/agents.partial.yaml
+/categories: !include ./routes/categories.partial.yaml
+#/items: !include ./routes/items.partial.yaml
+/locations: !include ./routes/locations.partial.yaml

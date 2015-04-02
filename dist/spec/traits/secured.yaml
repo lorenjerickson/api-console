@@ -1,0 +1,7 @@
+protocols:
+  - HTTPS
+queryParameters:
+  JWT:
+    description: The authentication token provided by Control4 for your application
+    type: string
+    required: true

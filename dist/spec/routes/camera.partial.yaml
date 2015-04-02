@@ -1,0 +1,60 @@
+    displayName: camera List
+    description: Return a list of devices defined in the project that implement the camera proxy.
+    is: [ secured, filterable ]
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include ../schemas/item-list.schema.json
+    /{id}:
+      is: [ secured ]
+      displayName: camera
+      description: Returns a single device defined in the project based on its unique identifer.
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/item.schema.json
+      /properties:
+        get:
+          responses:
+            200:
+              body:
+                application/json:
+                  schema: !include ../schemas/properties-list.schema.json
+        post:
+          body:
+            application/json:
+              schema: !include ../schemas/property-set-invocation.schema.json
+          responses:
+            200:
+              body:
+                application/json:
+                  schema: !include ../schemas/properties-list.schema.json
+      /variables:
+        get:
+          responses:
+            200:
+              body:
+                application/json:
+                  schema: !include ../schemas/variables-list.schema.json
+      /commands:
+        is: [ secured ]
+        displayName: Light Commands
+        description: Returns a list of commands available for the device through the camera proxy.
+        get:
+          responses:
+            200:
+              body:
+                application/json:
+                  schema: !include ../schemas/command-list.schema.json
+        put:
+          description: !include ../docs/cameras.camera.commands.md
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:

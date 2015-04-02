@@ -1,0 +1,4 @@
+queryParameters:
+  q:
+    description: A stringified and URI-encoded representation of a filter object to be used to constrain the results returned by this operation.  See [Control4 REST API Filter Specification](../docs/filters.md) for more information.
+    type: string

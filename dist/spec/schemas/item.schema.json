@@ -1,0 +1,112 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Project Item",
+	"description": "A general representation of an item defined in the current project.",
+	"type": "object",
+	"schema": {
+		"id": {
+			"type": "integer",
+			"description": "A unique identifier for this item."
+		},
+		"name": {
+			"type": "string",
+			"description": "The user-given name of this item."
+		},
+		"type": {
+			"type": "integer",
+			"description": "A numeric value indicating the type of this item."
+		},
+		"typeName": {
+			"type": "string",
+			"description": "A string value indicating the type of this item."
+		},
+		"parentId": {
+			"type": "integer",
+			"description": "The unique identifier of the parent of this item in the project hierarchy."
+		},
+		"siteId": {
+			"type": "integer",
+			"description": "If this item has a location, this is the unique identifier of the site at which this item exists."
+		},
+		"siteOrder": {
+			"type": "integer",
+			"description": "The order in which this site should be displayed in a list of sites."
+		},
+		"siteName": {
+			"type": "integer",
+			"description": "If this item has a location, this is the name of the site at which this item exists."
+		},
+		"buildingId": {
+			"type": "integer",
+			"description": "If this item has a location, this is the unique identifier of the building in which this item exists."
+		},
+		"buildingOrder": {
+			"type": "integer",
+			"description": "The order in which this building should be displayed in a list of buildings."
+		},
+		"buildingName": {
+			"type": "integer",
+			"description": "If this item has a location, this is the name of the building in which this item exists."
+		},
+		"floorId": {
+			"type": "integer",
+			"description": "If this item has a location, this is the unique identifier of the floor on which this item exists."
+		},
+		"floorOrder": {
+			"type": "integer",
+			"description": "The order in which this floor should be displayed in a list of floors."
+		},
+		"floorName": {
+			"type": "integer",
+			"description": "If this item has a location, this is the name of the floor on which this item exists."
+		},
+		"roomId": {
+			"type": "integer",
+			"description": "If this item has a location, this is the unique identifier of the room in which this item exists."
+		},
+		"roomOrder": {
+			"type": "integer",
+			"description": "The order in which this room should be displayed in a list of rooms."
+		},
+		"roomName": {
+			"type": "string",
+			"description": "If this item has a location, this is the name of the room in which this item exists."
+		},
+		"deviceOrder": {
+			"type": "integer",
+			"description": "The order in which this device should be displayed in a list of devices."
+		},
+		"roomHidden": {
+			"type": "boolean",
+			"description": "A flag indicating whether or not this room is hidden."
+		},
+		"tempHidden": {
+			"type": "boolean",
+			"description": "A flag indicating whether or not this item is hidden temporarily."
+		},
+		"protocolId": {
+			"type": "integer",
+			"description": "The unique identifier of the protocol driver instance for this item."
+		},
+		"protocolName": {
+			"type": "string",
+			"description": "The name given to this item by the user and stored in the protocol driver state.  This is usually the user-visible name of this item."
+		},
+		"protocolFilename": {
+			"type": "string",
+			"description": "The name of the driver file that has been loaded to support this item."
+		},
+		"model": {
+			"type": "string",
+			"description": "The name of the model of this device."
+		},
+		"control": {
+			"type": "string",
+			"description": "A string value indicating the type of control interface to be used to control this device."
+		},
+		"protocolControl": {
+			"type": "name",
+			"description": "A string value indicating the additional control interfaces supported by the protocol driver for this device."
+		}
+	}
+}

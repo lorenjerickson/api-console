@@ -1,0 +1,72 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Scheduler Event",
+	"description": "An instance of a scheduled event from the Scheduler Agent.",
+	"type": "object",
+	"schema": {
+		"id": {
+			"type": "id",
+			"description": "The unique identifier for this scheduler event."
+		},
+		"description": {
+			"type": "string",
+			"description": "Specify the friendly name for the schedule event."
+		},
+		"offset": {
+			"type": "integer",
+			"description": "Specify 0, 1 or 2.  0 = time-based schedule, 1 = sunrise schedule based on controller location setting, 2 = sunset schedule based on controller location"
+		},
+		"offset_minutes": {
+			"type": "integer",
+			"description": "number of minutes from the configured offset at which to trigger the event. (If offset=0, the number of minutes from midnight.  If offset=1 or 2, a delta of +/- 15 from the configured offset.)"
+		},
+		"randomize": {
+			"type": "integer",
+			"description": "The factor by which the trigger of the schedule event should be randomized in number of minutes (randomize=0 means no randomization)"
+		},
+		"start_day": {
+			"type": "integer",
+			"description": "The day of the month to start"
+		},
+		"start_month": {
+			"type": "integer",
+			"description": "The month of the year to start"
+		},
+		"start_year": {
+			"type": "integer",
+			"description": "The year in which to start"
+		},
+		"start_period": {
+			"type": "integer",
+			"description": "Must be 0 if using start day/month/year.  Specify 1-4 to indicate the week of the month on which to start."
+		},
+		"start_weekday": {
+			"type": "Specify 0-6, where 0 = Sunday.  start_period must be 0.",
+			"description": ""
+		},
+		"frequency": {
+			"type": "integer",
+			"description": "Specify the repeat interval for the schedule event (1 = daily, 2 = weekly, 3 = monthly, 4 = annually).  If not specified the event triggers only once."
+		},
+		"rate": {
+			"type": "integer",
+			"description": "If the frequency is specified, indicates the repeat rate.  For example 1 means repeat every 1 day/week/month/year."
+		},
+		"daymask": {
+			"type": "integer",
+			"description": "When the frequency is weekly, then specify a daymask in decimal format.  A 7 bit representation of the days backwards so lsb = sun, msb = sat. Example: 1000111 would be sun, mon, tue, sat.  or decimal 71."
+		},
+		"end_day": {
+			"type": "integer",
+			"description": "Specify the day portion of the end date for a recurring schedule event (see start_day)."
+		},
+		"end_month": {
+			"type": "integer",
+			"description": "Specify the month portion of the end date for a recurring schedule event (see start_month)."
+		},
+		"end_year": {
+			"type": "integer",
+			"description": "Specify the year portion of the end date for a recurring schedule event (see start_year)."
+		}
+	}
+}

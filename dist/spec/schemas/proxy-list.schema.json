@@ -1,0 +1,9 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Proxy List",
+	"description": "A list of proxy names that are present within a given category.",
+	"type": "array",
+	"items": {
+		"type": "string"
+	}
+}

@@ -1,0 +1,130 @@
+type: collection
+displayName: Locations
+is: [ secured, filterable ]
+get:
+  description: Returns a list of all locations included in the project.
+  responses:
+    200:
+      body:
+        application/json:
+          schema: !include ../schemas/item-list.schema.json
+/sites:
+  type: collection
+  displayName: Sites List
+  is: [ secured, filterable ]
+  get: 
+    description: Returns a list of all sites defined in the project.
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include ../schemas/item-list.schema.json
+/buildings:
+  type: collection
+  displayName: Buildings List
+  is: [ secured, filterable ]
+  get: 
+    description: Returns a list of all buildings defined in the project.
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include ../schemas/item-list.schema.json
+/floors:
+  type: collection
+  displayName: Floors List
+  is: [ secured, filterable ]
+  get: 
+    description: Returns a list of all floors defined in the project.
+    responses:
+      200:
+        body:
+          application/json:
+            schema: !include ../schemas/item-list.schema.json
+/rooms:
+  type: collection
+  displayName: Rooms List
+  is: [ secured, filterable ]
+  get: 
+    description: Returns a list of all rooms defined in the project.
+    responses:
+      200:
+        body:
+          application/json:
+            # TODO schema
+  /{id}:
+    is: [ secured ]
+    displayName: Room
+    description: Returns a single room based in the given identifier.
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              schema: !include ../schemas/item.schema.json
+    /properties:
+      is: [ secured ]
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/properties-list.schema.json
+      post:
+        body:
+          application/json:
+            schema: !include ../schemas/property-set-invocation.schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/properties-list.schema.json
+    /variables:
+      is: [ secured, observable ]
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/variables-list.schema.json
+    /commands:
+      is: [ secured ]
+      displayName: Light Commands
+      description: Returns a list of commands available for the device through the amplifier proxy.
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/command-list.schema.json
+      put:
+        description: !include ../docs/audio_video.amplifier.commands.md
+        responses:
+          200:
+            body:
+              application/json:
+    /{deviceType}:
+      uriParameters: 
+        deviceType:
+          type: string
+          description: Indicates the type of devices that should be returned
+          enum: [ listen_devices, watch_devices, camera_devices, thermostat_devices, light_devices, light_scenes, pool_devices, blind_devices, contactrelay_devices ]
+      is: [ secured ]
+      displayName: Room Devices by Device Type
+      description: Returns a list of devices in the given room that are of the given device type.
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/item-list.schema.json
+      put:
+        description: Sets the list and order of hidden and visible devices in the given room for devices of the given device type.
+        body:
+          application/json:
+            schema: !include ../schemas/room-device-visibility-and-order.schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                schema: !include ../schemas/item-list.schema.json

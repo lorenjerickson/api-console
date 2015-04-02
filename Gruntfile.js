@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
@@ -44,14 +44,14 @@ module.exports = function (grunt) {
     connect: {
       options: {
         hostname: '0.0.0.0',
-        port:     9000
+        port: 9000
       },
 
       livereload: {
         options: {
           livereload: true,
-          open:       true,
-          middleware: function (connect) {
+          open: true,
+          middleware: function(connect) {
             return [
               connect.static('dist')
             ];
@@ -62,8 +62,8 @@ module.exports = function (grunt) {
       regression: {
         options: {
           livereload: true,
-          open:       false,
-          middleware: function (connect) {
+          open: false,
+          middleware: function(connect) {
             return [
               connect.static('dist'),
               connect.static('test/regression/assets'),
@@ -83,12 +83,22 @@ module.exports = function (grunt) {
     copy: {
       assets: {
         files: [{
-          dest:   '<%= distdir %>',
-          cwd:    'src/assets/',
+          dest: '<%= distdir %>',
+          cwd: 'src/assets/',
           expand: true,
-          src:    [
+          src: [
             '**',
             '!styles/**/*'
+          ]
+        }]
+      },
+      spec: {
+        files: [{
+          dest: '<%= distdir %>/spec',
+          cwd: '../c4-api-spec/src/raml/',
+          expand: true,
+          src: [
+            '**'
           ]
         }]
       }
@@ -100,8 +110,8 @@ module.exports = function (grunt) {
           module: 'ramlConsoleApp'
         },
 
-        cwd:  'src/app',
-        src:  '**/*.tpl.html',
+        cwd: 'src/app',
+        src: '**/*.tpl.html',
         dest: '<%= tempdir %>/templates/app.js'
       }
     },
@@ -109,7 +119,7 @@ module.exports = function (grunt) {
     concat: {
       app: {
         dest: '<%= distdir %>/scripts/<%= pkg.name %>.js',
-        src:  [
+        src: [
           '<%= src.js %>',
           '<%= ngtemplates.ramlConsole.dest %>'
         ]
@@ -121,7 +131,7 @@ module.exports = function (grunt) {
         },
 
         dest: '<%= distdir %>/index.html',
-        src:  'src/index.html'
+        src: 'src/index.html'
       },
 
       darkTheme: {
@@ -132,7 +142,7 @@ module.exports = function (grunt) {
         },
 
         dest: '<%= distdir %>/styles/<%= pkg.name %>-dark-theme.css',
-        src:  [
+        src: [
           'src/assets/styles/vendor/codemirror.css',
           'src/assets/styles/fonts.css',
           'src/assets/styles/error.css',
@@ -149,7 +159,7 @@ module.exports = function (grunt) {
         },
 
         dest: '<%= distdir %>/styles/<%= pkg.name %>-light-theme.css',
-        src:  [
+        src: [
           'src/assets/styles/vendor/codemirror.css',
           'src/assets/styles/fonts.css',
           'src/assets/styles/error.css',
@@ -159,7 +169,7 @@ module.exports = function (grunt) {
       },
 
       vendor: {
-        src:  '<%= src.jsVendor %>',
+        src: '<%= src.jsVendor %>',
         dest: '<%= distdir %>/scripts/<%= pkg.name %>-vendor.js'
       }
     },
@@ -170,6 +180,7 @@ module.exports = function (grunt) {
         'concat:vendor',
         'concat:index',
         'copy:assets',
+        'copy:spec',
         'build:styles'
       ],
 
@@ -183,24 +194,24 @@ module.exports = function (grunt) {
       build: {
         options: {
           sourcemap: 'none',
-          style:     'expanded'
+          style: 'expanded'
         },
 
         files: {
           '<%= distdir %>/styles/<%= pkg.name %>-light-theme.css': 'src/scss/light-theme.scss',
-          '<%= distdir %>/styles/<%= pkg.name %>-dark-theme.css':  'src/scss/dark-theme.scss'
+          '<%= distdir %>/styles/<%= pkg.name %>-dark-theme.css': 'src/scss/dark-theme.scss'
         }
       },
 
       min: {
         options: {
           sourcemap: 'none',
-          style:     'compressed'
+          style: 'compressed'
         },
 
         files: {
           '<%= distdir %>/styles/<%= pkg.name %>-light-theme.css': 'src/scss/light-theme.scss',
-          '<%= distdir %>/styles/<%= pkg.name %>-dark-theme.css':  'src/scss/dark-theme.scss'
+          '<%= distdir %>/styles/<%= pkg.name %>-dark-theme.css': 'src/scss/dark-theme.scss'
         }
       }
     },
@@ -252,6 +263,13 @@ module.exports = function (grunt) {
           'src/assets/**/*',
           '!src/assets/styles/**/*'
         ]
+      },
+
+      spec: {
+          tasks: ['copy:spec'],
+          files: [
+              '../c4-api-spec/src/raml/**/*'
+          ]
       }
     },
 
@@ -259,13 +277,13 @@ module.exports = function (grunt) {
     css_prefix: {
       prefix: {
         options: {
-          prefix:      'raml-console-',
+          prefix: 'raml-console-',
           processName: 'trim'
         },
 
         files: {
           '<%= distdir %>/styles/<%= pkg.name %>-light-theme.css': '<%= distdir %>/styles/<%= pkg.name %>-light-theme.css',
-          '<%= distdir %>/styles/<%= pkg.name %>-dark-theme.css':  '<%= distdir %>/styles/<%= pkg.name %>-dark-theme.css'
+          '<%= distdir %>/styles/<%= pkg.name %>-dark-theme.css': '<%= distdir %>/styles/<%= pkg.name %>-dark-theme.css'
         }
       }
     },
@@ -286,7 +304,7 @@ module.exports = function (grunt) {
 
     protractor: {
       options: {
-        keepAlive:  false
+        keepAlive: false
       },
 
       local: {

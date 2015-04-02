@@ -1,0 +1,9 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "Variable List",
+	"description": "A list of variables for the given item.",
+	"type": "array",
+	"items": {
+		"type": "object"
+	}
+}
